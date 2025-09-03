@@ -13,7 +13,8 @@ export const apiCall = async (endpoint, options = {}) => {
   const defaultOptions = {
     headers: {
       ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
-      ...(token && { 'Authorization': `Bearer ${token}` })
+      ...(token && { 'Authorization': `Bearer ${token}` }),
+      'Host': 'goldchopsticks.restaurants-api-d19o.onrender.com'
     }
   };
 
