@@ -8,7 +8,7 @@ export const apiCall = async (endpoint, options = {}) => {
   const url = `${API_BASE_URL}${endpointWithRestaurant}`;
   
   // Get token from localStorage
-  const user = JSON.parse(localStorage.getItem('goldenChopsticksUser') || '{}');
+  const user = JSON.parse(localStorage.getItem('goldChopsticksUser') || '{}');
   const token = user.token;
 
   const isFormData = options.body instanceof FormData;
