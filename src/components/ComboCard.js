@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus, Star } from 'lucide-react';
+import { Plus, Star } from 'lucide-react';
 import ComboSelector from './ComboSelector';
 
 const ComboCard = ({ combo, onAddToCart }) => {

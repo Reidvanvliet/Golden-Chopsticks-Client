@@ -80,22 +80,22 @@ const ComboSelector = ({ comboId, onAddToCart }) => {
     }
   };
 
-  const getNextItemPrice = () => {
-    if (!combo || combo.id !== 1) {
-      return parseFloat(combo?.additional_item_price || combo?.additionalItemPrice || 0);
-    }
-    
-    // Special pricing for combo 1
-    const currentTotal = selectedItems.length + additionalItems.length;
-    
-    if (currentTotal < 2) {
-      return 0; // Items 1-2 are included in base price
-    } else if (currentTotal === 2) {
-      return 3.00; // 3rd item costs +$3.00
-    } else {
-      return 7.00; // 4+ items cost +$7.00 each
-    }
-  };
+  // const getNextItemPrice = () => {
+  //   if (!combo || combo.id !== 1) {
+  //     return parseFloat(combo?.additional_item_price || combo?.additionalItemPrice || 0);
+  //   }
+  //   
+  //   // Special pricing for combo 1
+  //   const currentTotal = selectedItems.length + additionalItems.length;
+  //   
+  //   if (currentTotal < 2) {
+  //     return 0; // Items 1-2 are included in base price
+  //   } else if (currentTotal === 2) {
+  //     return 3.00; // 3rd item costs +$3.00
+  //   } else {
+  //     return 7.00; // 4+ items cost +$7.00 each
+  //   }
+  // };
 
   const calculateTotal = () => {
     if (!combo) return 0;

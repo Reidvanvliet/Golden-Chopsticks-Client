@@ -420,7 +420,7 @@ export const setupAuthInterceptor = () => {
   // For fetch, we handle it in the apiCall function above
 };
 
-export default {
+const apiService = {
   apiCall,
   authAPI,
   menuAPI,
@@ -431,3 +431,5 @@ export default {
   comboAPI,
   handleAPIError
 };
+
+export default apiService;
