@@ -2,10 +2,13 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api
 
 // Generic API call function
 export const apiCall = async (endpoint, options = {}) => {
-  const url = `${API_BASE_URL}${endpoint}`;
+  // Add restaurant query parameter to all endpoints
+  const separator = endpoint.includes('?') ? '&' : '?';
+  const endpointWithRestaurant = `${endpoint}${separator}restaurant=goldenchopsticks`;
+  const url = `${API_BASE_URL}${endpointWithRestaurant}`;
   
   // Get token from localStorage
-  const user = JSON.parse(localStorage.getItem('goldChopsticksUser') || '{}');
+  const user = JSON.parse(localStorage.getItem('goldenChopsticksUser') || '{}');
   const token = user.token;
 
   const isFormData = options.body instanceof FormData;
