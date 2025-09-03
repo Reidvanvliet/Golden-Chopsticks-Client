@@ -57,14 +57,11 @@ const AddressAutocomplete = ({
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
     script.async = true;
     script.onload = () => {
-      console.log('Google Maps API loaded successfully');
       setTimeout(() => {
         initializeAutocomplete();
       }, 100);
     };
     script.onerror = (error) => {
-      console.error('Failed to load Google Maps API:', error);
-      console.error('API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
       setIsLoaded(true);
     };
     
