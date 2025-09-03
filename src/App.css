@@ -1,0 +1,306 @@
+/* Gold Chopsticks Component-Specific Styles */
+/* NO @tailwind directives in this file - they should only be in index.css */
+
+/* Cherry blossom logo glow effect */
+.logo-glow {
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.logo-glow:hover {
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));
+}
+
+/* Menu item hover effects */
+.menu-item {
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.02);
+}
+
+.menu-item:hover .menu-item-image {
+  transform: scale(1.1);
+}
+
+.menu-item-image {
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+/* Cart bounce animation */
+.cart-bounce {
+  animation: cart-bounce 0.6s ease;
+}
+
+@keyframes cart-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Error message slide-in animation */
+.error-slide-in {
+  animation: error-slide-in 0.3s ease-out;
+}
+
+@keyframes error-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Success message animation */
+.success-fade-in {
+  animation: success-fade-in 0.5s ease-out;
+}
+
+@keyframes success-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating cherry blossom petals */
+.animate-petal-fall {
+  animation: petal-fall 8s linear infinite;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Chinese pattern background */
+.chinese-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Navigation link active indicator */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #fbbf24;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-active::after,
+.nav-link:hover::after {
+  width: 80%;
+}
+
+/* Form focus effects */
+.form-group {
+  position: relative;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.75);
+  color: #ef4444;
+}
+
+.form-group label {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  color: #9ca3af;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+/* Custom scrollbar for webkit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.5);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 68, 68, 0.7);
+}
+
+/* Enhanced category scrollbar styles */
+.category-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-scroll::-webkit-scrollbar-track {
+  background: rgba(17, 24, 39, 0.5);
+  border-radius: 3px;
+}
+
+.category-scroll::-webkit-scrollbar-thumb {
+  background: rgba(220, 38, 38, 0.6);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.category-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 38, 38, 0.8);
+}
+
+/* Admin category scrollbar styles */
+.admin-category-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.admin-category-scroll::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.5);
+  border-radius: 3px;
+}
+
+.admin-category-scroll::-webkit-scrollbar-thumb {
+  background: rgba(220, 38, 38, 0.6);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.admin-category-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 38, 38, 0.8);
+}
+
+/* Smooth scrolling behavior */
+.category-scroll {
+  scroll-behavior: smooth;
+}
+
+.admin-category-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Page transition effects */
+.page-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hero section background gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #7f1d1d 0%, #000000 50%, #7f1d1d 100%);
+}
+
+/* Loading spinner for when Tailwind classes aren't available */
+.loading-spinner-fallback {
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid #ef4444;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  .text-responsive-lg {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .text-responsive-xl {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive-lg {
+    font-size: 3.5rem;
+    line-height: 1.2;
+  }
+  
+  .text-responsive-xl {
+    font-size: 5rem;
+    line-height: 1.1;
+  }
+}
+
+/* Utility classes that work without Tailwind */
+.btn-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #b91c1c;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-fallback:hover {
+  background-color: #991b1b;
+  transform: scale(1.05);
+}
+
+.card-fallback {
+  background-color: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+  border: 1px solid #374151;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-fallback:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 20px 25px -5px rgba(239, 68, 68, 0.1);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

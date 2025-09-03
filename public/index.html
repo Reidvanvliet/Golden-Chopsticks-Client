@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/chopsticks_favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f59e0b" />
+    <meta name="description" content="Golden Chopsticks Chinese Restaurant - Authentic Chinese Cuisine in West Kelowna, BC. Family-owned restaurant serving generous portions at great prices." />
+    <meta name="keywords" content="Chinese restaurant, West Kelowna, authentic Chinese food, family restaurant, takeout, delivery, dine-in" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Golden Chopsticks - Authentic Chinese Cuisine | West Kelowna, BC" />
+    <meta property="og:description" content="Experience authentic Chinese flavors at Golden Chopsticks. Family-owned restaurant in West Kelowna serving traditional dishes with generous portions." />
+    <meta property="og:image" content="%PUBLIC_URL%/golden-chopsticks-logo.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Golden Chopsticks - Authentic Chinese Cuisine" />
+    <meta property="twitter:description" content="Family-owned Chinese restaurant in West Kelowna. Authentic flavors, generous portions, great prices." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <meta name="google-signin-client_id" content="%REACT_APP_GOOGLE_CLIENT_ID%">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Golden Chopsticks Brand Colors - Gold & Black with Pink Accents
+              'primary-gold': '#f59e0b',
+              'light-gold': '#fbbf24',
+              'dark-gold': '#d97706',
+              'deep-black': '#000000',
+              'soft-black': '#111827',
+              'gray-black': '#1f2937',
+              'accent-pink': '#ec4899',
+              'light-pink': '#f9a8d4',
+              'soft-pink': '#fce7f3',
+              // Legacy compatibility
+              'chinese-red': '#ec4899',
+              'chinese-gold': '#f59e0b',
+              'chinese-pink': '#f9a8d4',
+            },
+            fontFamily: {
+              'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            animation: {
+              'float': 'float 3s ease-in-out infinite',
+              'glow': 'goldGlow 2s ease-in-out infinite',
+              'petal-dance': 'petalDance 4s ease-in-out infinite',
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-in': 'slideIn 0.3s ease-out',
+              'scale-in': 'scaleIn 0.3s ease-out',
+              'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              goldGlow: {
+                '0%, 100%': { boxShadow: '0 0 10px rgba(245, 158, 11, 0.5)' },
+                '50%': { boxShadow: '0 0 25px rgba(245, 158, 11, 0.8)' },
+              },
+              petalDance: {
+                '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                '33%': { transform: 'translateY(-5px) rotate(2deg)' },
+                '66%': { transform: 'translateY(2px) rotate(-1deg)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideIn: {
+                '0%': { transform: 'translateX(100%)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              scaleIn: {
+                '0%': { transform: 'scale(0.9)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              bounceGentle: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-5px)' },
+              },
+            },
+            backgroundImage: {
+              'gold-gradient': 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%)',
+              'black-gradient': 'linear-gradient(135deg, #000000 0%, #111827 50%, #1f2937 100%)',
+              'hero-gradient': 'linear-gradient(135deg, #000000 0%, #1f2937 50%, #000000 100%)',
+              'warm-gradient': 'linear-gradient(135deg, #92400e 0%, #d97706 25%, #f59e0b 50%, #fbbf24 75%, #fde047 100%)',
+            },
+          },
+        },
+      }
+    </script>
+    
+    <title>Golden Chopsticks - Authentic Chinese Cuisine | West Kelowna, BC</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
