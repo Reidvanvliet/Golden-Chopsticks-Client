@@ -122,10 +122,7 @@ const CheckoutForm = ({
     }
     
     if (deliveryType === 'delivery' && !orderData.address.trim()) {
-      console.log('Address validation failed. orderData.address:', JSON.stringify(orderData.address));
       errors.address = 'Delivery address is required';
-    } else if (deliveryType === 'delivery') {
-      console.log('Address validation passed. orderData.address:', JSON.stringify(orderData.address));
     }
     
     setValidationErrors(errors);
@@ -140,8 +137,6 @@ const CheckoutForm = ({
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
-    
-    console.log('Place order clicked. Current orderData:', JSON.stringify(orderData, null, 2));
     
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
@@ -445,7 +440,6 @@ const CheckoutForm = ({
                     <AddressAutocomplete
                       value={orderData.address}
                       onChange={(value) => {
-                        console.log('AddressAutocomplete onChange called with value:', JSON.stringify(value));
                         setOrderData(prev => ({ ...prev, address: value }));
                         // Clear validation error when user starts typing
                         if (validationErrors.address) {

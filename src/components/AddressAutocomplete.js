@@ -27,7 +27,7 @@ const AddressAutocomplete = ({
         try {
           window.google?.maps?.event?.clearInstanceListeners(autocompleteRef.current);
         } catch (error) {
-          console.log('Error cleaning up autocomplete:', error);
+          // Handle cleanup error silently
         }
       }
     };
@@ -37,7 +37,6 @@ const AddressAutocomplete = ({
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     
     if (!apiKey) {
-      console.error('Google Maps API key is not set. Please add REACT_APP_GOOGLE_API_KEY to your environment variables.');
       setIsLoaded(true);
       return;
     }
@@ -70,12 +69,10 @@ const AddressAutocomplete = ({
 
   const initializeAutocomplete = () => {
     if (!inputRef.current || !window.google || !window.google.maps || !window.google.maps.places) {
-      console.log('Google Maps API not ready yet');
       return;
     }
 
     try {
-      console.log('Initializing Google Places Autocomplete');
       
       // Create the traditional Autocomplete
       autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
@@ -108,9 +105,7 @@ const AddressAutocomplete = ({
       }
       
       setIsLoaded(true);
-      console.log('Google Places Autocomplete initialized successfully');
     } catch (error) {
-      console.error('Error initializing Google Places Autocomplete:', error);
       setIsLoaded(true);
     }
   };
@@ -118,21 +113,18 @@ const AddressAutocomplete = ({
   const handlePlaceChanged = () => {
     try {
       const place = autocompleteRef.current.getPlace();
-      console.log('Place changed:', place);
       
       if (place && place.formatted_address) {
         const address = place.formatted_address;
-        console.log('Setting address to:', address);
         onChange(address);
       }
     } catch (error) {
-      console.error('Error in handlePlaceChanged:', error);
+      // Handle error silently
     }
   };
 
   const handleInputChange = (event) => {
     const newValue = event.target.value;
-    console.log('Input changed to:', newValue);
     onChange(newValue);
   };
 
