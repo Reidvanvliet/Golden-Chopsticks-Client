@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { authAPI, handleAPIError } from '../services/api';
+import AddressAutocomplete from '../components/AddressAutocomplete';
 
 const CreateAccountPage = ({ setCurrentPage, setUser, setLoading, setError }) => {
   const [formData, setFormData] = useState({
@@ -135,14 +136,12 @@ const CreateAccountPage = ({ setCurrentPage, setUser, setLoading, setError }) =>
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Address <span className="text-red-400">*</span>
               </label>
-              <input
-                type="text"
-                name="address"
+              <AddressAutocomplete
                 value={formData.address}
-                onChange={handleInputChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, address: value }))}
+                placeholder="Start typing your address..."
                 className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                placeholder="123 Main St, West Kelowna, BC"
-                required
+                required={true}
                 disabled={isSubmitting}
               />
             </div>

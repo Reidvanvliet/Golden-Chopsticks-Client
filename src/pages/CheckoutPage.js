@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CreditCard, Lock, MapPin, User } from 'lucide-react';
+import AddressAutocomplete from '../components/AddressAutocomplete';
 import { loadStripe } from '@stripe/stripe-js';
 import {
   Elements,
@@ -121,7 +122,10 @@ const CheckoutForm = ({
     }
     
     if (deliveryType === 'delivery' && !orderData.address.trim()) {
+      console.log('Address validation failed. orderData.address:', JSON.stringify(orderData.address));
       errors.address = 'Delivery address is required';
+    } else if (deliveryType === 'delivery') {
+      console.log('Address validation passed. orderData.address:', JSON.stringify(orderData.address));
     }
     
     setValidationErrors(errors);
@@ -136,6 +140,8 @@ const CheckoutForm = ({
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
+    
+    console.log('Place order clicked. Current orderData:', JSON.stringify(orderData, null, 2));
     
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
@@ -436,12 +442,17 @@ const CheckoutForm = ({
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Delivery Address <span className="text-red-400">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="address"
+                    <AddressAutocomplete
                       value={orderData.address}
-                      onChange={handleInputChange}
-                      placeholder="123 Main St, West Kelowna, BC"
+                      onChange={(value) => {
+                        console.log('AddressAutocomplete onChange called with value:', JSON.stringify(value));
+                        setOrderData(prev => ({ ...prev, address: value }));
+                        // Clear validation error when user starts typing
+                        if (validationErrors.address) {
+                          setValidationErrors(prev => ({ ...prev, address: null }));
+                        }
+                      }}
+                      placeholder="Start typing your address..."
                       className={`w-full px-4 py-3 bg-gray-700 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-1 ${
                         validationErrors.address 
                           ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
@@ -449,10 +460,8 @@ const CheckoutForm = ({
                       }`}
                       required={deliveryType === 'delivery'}
                       disabled={isProcessing}
+                      error={validationErrors.address}
                     />
-                    {validationErrors.address && (
-                      <p className="mt-1 text-sm text-red-400">{validationErrors.address}</p>
-                    )}
                   </div>
                 )}
                 
